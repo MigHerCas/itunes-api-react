@@ -1,10 +1,10 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
+import type { NextApiRequest, NextApiResponse } from 'next';
 
 type Data = {
-  name: string
-}
+  name: string;
+};
 
-export default (req: NextApiRequest, res: NextApiResponse<Data) => {
-  res.statusCode = 200
-  res.json({ name: 'John Doe' })
-}
+export default (req: NextApiRequest, res: NextApiResponse<Data>): void => {
+  res.statusCode = 200;
+  res.json({ name: 'John Doe' });
+};
