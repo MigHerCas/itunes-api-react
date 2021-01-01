@@ -4,7 +4,7 @@ type Data = {
   name: string;
 };
 
-export default (req: NextApiRequest, res: NextApiResponse<Data>): void => {
+export default (_req: NextApiRequest, res: NextApiResponse<Data>): void => {
   res.statusCode = 200;
   res.json({ name: 'John Doe' });
 };
