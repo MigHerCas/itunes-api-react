@@ -1,17 +1,17 @@
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 
-export default function Home(): JSX.Element {
+export default function Favourites(): JSX.Element {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Itunes api app</title>
+        <title>Favourites page</title>
         <link rel="icon" href="/" />
       </Head>
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Itunes api <a href="https://nextjs.org">Next.js! app</a>
+          <span>Favourites</span>
         </h1>
 
         <p className={styles.description}>
@@ -40,11 +40,6 @@ export default function Home(): JSX.Element {
           >
             <h3>Deploy &rarr;</h3>
             <p>Instantly deploy your Next.js site to a public URL with Vercel.</p>
-          </a>
-
-          <a href="/favourites" className={styles.card}>
-            <h3>Favourites &rarr;</h3>
-            <p>Visit our favourites page</p>
           </a>
         </div>
       </main>
