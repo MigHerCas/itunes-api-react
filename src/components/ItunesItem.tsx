@@ -5,7 +5,7 @@ interface Props {
   imgUrl: string;
   title: string;
   subtitle: string;
-  type: 'track' | 'album';
+  type: 'Track' | 'Album';
   isFavourite: boolean;
 }
 
