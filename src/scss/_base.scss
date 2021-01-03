@@ -1,0 +1,48 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: Montserrat, san-serif;
+  font-size: 62.5%;
+}
+
+html,
+body {
+  min-height: 100vh;
+  margin: 0;
+  scroll-behavior: smooth;
+}
+
+
+/*
+  * Reset top margins on titles that are first-child.
+*/
+h1,
+h2,
+h3 {
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+/*
+  * Reset top margins on titles that are first-child.
+*/
+img {
+  height: auto;
+  max-width: 100%;
+}
+
+button {
+  border: 0;
+  padding: 0;
+}
