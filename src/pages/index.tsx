@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Header from '../components/Header';
+import IonSearchBar from '../components/IonSearchBar';
 
 export default function Home(): JSX.Element {
   return (
@@ -8,7 +9,9 @@ export default function Home(): JSX.Element {
         <title>Itunes api app</title>
         <link rel="icon" href="/" />
       </Head>
-      <Header />
+      <Header>
+        <IonSearchBar />
+      </Header>
     </div>
   );
 }
