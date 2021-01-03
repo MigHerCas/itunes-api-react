@@ -1,0 +1,57 @@
+.itunes-item {
+  position: relative;
+  max-width: 30rem;
+  border: 1px solid $color-light-grey;
+}
+
+.itunes-item__toggle-favourite {
+  margin: 0;
+  padding: 2rem;
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  button {
+    display: flex;
+    background-color: $color-white;
+    border-radius: 50%;
+    padding: 1rem;
+    outline: none;
+    cursor: pointer;
+  }
+}
+
+.itunes-item__img-wrapper {
+  display: flex;
+}
+
+.itunes-item__info-wrapper {
+  padding: 1.5rem 2rem;
+}
+
+.itunes-item__title {
+  margin-bottom: 1rem;
+}
+
+.itunes-item__subtitle {
+  color: $color-dark-grey;
+  margin-bottom: 1.5rem;
+}
+
+.itunes-item__type {
+  display: inline-block;
+  font-weight: bold;
+  font-size: 1.3rem;
+  padding: 0.5rem;
+  border-radius: 10px;
+  border: 3px solid;
+}
+
+.itunes-item__type--track {
+  border-color: $color-track;
+  color: $color-track;
+}
+.itunes-item__type--album {
+  border-color: $color-album;
+  color: $color-album;
+}

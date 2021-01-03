@@ -1,0 +1,12 @@
+.itunes-items {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 100rem;
+  gap: 3rem;
+  margin: auto;
+
+  list-style-type: none;
+  padding: 0;
+}
