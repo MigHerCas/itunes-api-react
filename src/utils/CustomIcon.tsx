@@ -2,13 +2,32 @@ import Icon from '@mdi/react';
 
 interface Props {
   path: string;
-  color: string;
+  fill: string;
+  stroke?: string;
   title: string;
   size?: number;
 }
 
-export default function CustomIcon({ path, color, title, size = 3 }: Props): JSX.Element {
+export default function CustomIcon({
+  path,
+  fill,
+  stroke = fill,
+  title,
+  size = 3,
+}: Props): JSX.Element {
+  const style = {
+    stroke: stroke,
+  };
   return (
-    <Icon path={path} title={title} size={size} horizontal vertical color={color} rotate={180} />
+    <Icon
+      style={style}
+      path={path}
+      title={title}
+      size={size}
+      horizontal
+      vertical
+      color={fill}
+      rotate={180}
+    />
   );
 }
