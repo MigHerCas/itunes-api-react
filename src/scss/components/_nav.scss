@@ -1,0 +1,45 @@
+nav {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 10rem;
+  background-color: $color-itunes-blue;
+  padding: 0 1rem;
+
+  @media (min-width: 768px) {
+    padding: 0 3rem;
+  }
+
+  @media (min-width: 1024px) {
+    padding: 0 5rem;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+.header__favourites-badge {
+  position: relative;
+
+  .header__favourites-counter {
+    position: absolute;
+    top: -0.5rem;
+    right: -1rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background-color: $color-moustard;
+    text-align: center;
+  }
+
+  .header__favourites-counter span {
+    font-size: 1.3rem;
+    vertical-align: middle;
+    line-height: 2.5rem;
+    font-weight: 500;
+    color: $color-white;
+  }
+}

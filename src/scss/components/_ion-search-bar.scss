@@ -1,0 +1,15 @@
+.ion-searchbar {
+  display: inline-block;
+  border: 0;
+  font-size: 1.8rem;
+  padding: 2rem;
+  border-radius: 10px;
+  width: 60%;
+  margin: 0 2rem;
+  outline: none;
+  text-align: center;
+
+  @media (min-width: 768px) {
+    margin: 0 1rem;
+  }
+}

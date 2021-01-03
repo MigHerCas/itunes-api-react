@@ -1,2 +1,12 @@
-@import 'base';
-@import 'main';
+// Abstract
+@import './abstract/base';
+@import './abstract/variables';
+
+// Layout
+@import './layout/layout';
+
+// Components
+@import './components/ion-search-bar';
+@import './components/itunes-items';
+@import './components/itunes-item';
+@import './components/nav';

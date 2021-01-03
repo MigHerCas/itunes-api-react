@@ -1,0 +1,25 @@
+header {
+  width: 100%;
+  position: fixed;
+}
+
+main {
+  padding-top: 13rem;
+  padding-bottom: 5rem;
+  margin: 0 2rem;
+
+  @media (min-width: 768px) {
+    margin: 0 3rem;
+    padding-top: 15rem;
+  }
+
+  @media (min-width: 1024px) {
+    margin: 0 5rem;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 2rem;
+  }
+}
