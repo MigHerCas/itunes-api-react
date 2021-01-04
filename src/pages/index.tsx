@@ -18,15 +18,17 @@ export default function Home(): JSX.Element {
         <VisibilityFilter />
         <ItunesItems>
           <ItunesItem
+            id={0}
             title="Title example"
-            subtitle="Subtitle example"
+            artist="Subtitle example"
             isFavourite={false}
             type="Track"
             imgUrl="http://unsplash.it/1400?random&gravity=center"
           />
           <ItunesItem
+            id={1}
             title="Title example"
-            subtitle="Subtitle example"
+            artist="Subtitle example"
             isFavourite={true}
             type="Album"
             imgUrl="http://unsplash.it/1500?random&gravity=center"

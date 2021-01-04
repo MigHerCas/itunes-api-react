@@ -1,21 +1,15 @@
 import { mdiCardsHeart } from '@mdi/js';
+import { ItunesItemModel } from '../models';
 import CustomIcon from '../utils/CustomIcon';
-
-interface Props {
-  imgUrl: string;
-  title: string;
-  subtitle: string;
-  type: 'Track' | 'Album';
-  isFavourite: boolean;
-}
+import Image from 'next/image';
 
 export default function ItunesItem({
   imgUrl,
   title,
-  subtitle,
+  artist,
   isFavourite,
   type,
-}: Props): JSX.Element {
+}: ItunesItemModel): JSX.Element {
   return (
     <li className="itunes-item">
       <div className="itunes-item__toggle-favourite">
@@ -29,11 +23,11 @@ export default function ItunesItem({
         </button>
       </div>
       <div className="itunes-item__img-wrapper">
-        <img src={imgUrl} alt="Itunes item cover" />
+        <Image src={imgUrl} alt="Itunes item cover" width={300} height={300} priority />
       </div>
       <div className="itunes-item__info-wrapper">
         <h2 className="itunes-item__title">{title}</h2>
-        <h3 className="itunes-item__subtitle">{subtitle}</h3>
+        <h3 className="itunes-item__subtitle">{artist}</h3>
         <span className={`itunes-item__type itunes-item__type--${type}`}>{type}</span>
       </div>
     </li>

@@ -22,3 +22,12 @@ export interface Album {
   collectionName: string;
   collectionViewUrl: string;
 }
+
+export interface ItunesItemModel {
+  id: number;
+  imgUrl: string;
+  title: string;
+  artist: string;
+  type: 'Album' | 'Track';
+  isFavourite: boolean;
+}
