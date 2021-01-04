@@ -14,7 +14,7 @@ export default function Header(): JSX.Element {
             <CustomIcon path={mdiHomeCircle} fill="#fff" />
           </a>
         </Link>
-        <IonSearchBar placeholder="Search for items..." />
+        <IonSearchBar placeholder="Search for an artist" />
         <div className="header__favourites-badge">
           <Link href="/favourites">
             <a>

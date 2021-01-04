@@ -3,3 +3,22 @@ export interface Artist {
   artistName: 'David Bowie';
   artistLinkUrl: string;
 }
+
+export interface Track {
+  artistId: number;
+  artistName: string;
+  kind: 'song';
+  trackId: number;
+  artworkUrl100: string;
+  trackName: string;
+  trackViewUrl: string;
+}
+
+export interface Album {
+  artistId: number;
+  artistName: string;
+  artworkUrl100: string;
+  collectionId: number;
+  collectionName: string;
+  collectionViewUrl: string;
+}
