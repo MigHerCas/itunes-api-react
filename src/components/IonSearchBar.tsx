@@ -12,7 +12,7 @@ export default function IonSearchBar({ placeholder }: Props): JSX.Element {
 
   const { artists } = useSearchArtist(debouncedQuery);
 
-  if (artists) {
+  if (artists.length > 0) {
     console.log(artists);
   }
   return (
