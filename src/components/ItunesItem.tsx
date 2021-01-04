@@ -25,7 +25,6 @@ export default function ItunesItem({
             path={mdiCardsHeart}
             size={2}
             fill={isFavourite ? '#ffcc00' : 'transparent'}
-            title="Favourite Icon"
           />
         </button>
       </div>

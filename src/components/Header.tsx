@@ -11,14 +11,14 @@ export default function Header(): JSX.Element {
       <nav className="header-nav">
         <Link href="/">
           <a>
-            <CustomIcon path={mdiHomeCircle} title="Home icon" fill="#fff" />
+            <CustomIcon path={mdiHomeCircle} fill="#fff" />
           </a>
         </Link>
         <IonSearchBar placeholder="Search for items..." />
         <div className="header__favourites-badge">
           <Link href="/favourites">
             <a>
-              <CustomIcon path={mdiCardsHeart} title="Heart icon" fill="#fff" />
+              <CustomIcon path={mdiCardsHeart} fill="#fff" />
               <div className="header__favourites-counter">
                 <span>3</span>
               </div>
