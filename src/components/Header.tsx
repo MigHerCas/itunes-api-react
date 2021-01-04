@@ -1,22 +1,20 @@
 import React from 'react';
+import Link from 'next/link';
+import IonSearchBar from './IonSearchBar';
 import CustomIcon from '../utils/CustomIcon';
 import { mdiHomeCircle } from '@mdi/js';
 import { mdiCardsHeart } from '@mdi/js';
-import Link from 'next/link';
-interface Props {
-  children?: React.ReactNode;
-}
 
-export default function Header({ children }: Props): JSX.Element {
+export default function Header(): JSX.Element {
   return (
     <header>
-      <nav>
+      <nav className="header-nav">
         <Link href="/">
           <a>
             <CustomIcon path={mdiHomeCircle} title="Home icon" fill="#fff" />
           </a>
         </Link>
-        {children}
+        <IonSearchBar placeholder="Search for items..." />
         <div className="header__favourites-badge">
           <Link href="/favourites">
             <a>

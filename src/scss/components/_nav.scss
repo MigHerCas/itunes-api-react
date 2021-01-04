@@ -1,4 +1,4 @@
-nav {
+.header-nav {
   display: inline-flex;
   align-items: center;
   justify-content: space-between;
@@ -31,7 +31,7 @@ nav {
     width: 2.5rem;
     height: 2.5rem;
     border-radius: 50%;
-    background-color: $color-moustard;
+    background-color: $color-yellow-dark;
     text-align: center;
   }
 
@@ -40,6 +40,6 @@ nav {
     vertical-align: middle;
     line-height: 2.5rem;
     font-weight: 500;
-    color: $color-white;
+    color: $color-black;
   }
 }
