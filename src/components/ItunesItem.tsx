@@ -21,10 +21,10 @@ export default function ItunesItem({
       <div className="itunes-item__toggle-favourite">
         <button>
           <CustomIcon
-            stroke="#0a84ff"
+            stroke="#ffd60a"
             path={mdiCardsHeart}
             size={2}
-            fill={isFavourite ? '#0a84ff' : 'transparent'}
+            fill={isFavourite ? '#ffcc00' : 'transparent'}
             title="Favourite Icon"
           />
         </button>

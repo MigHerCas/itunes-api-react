@@ -2,6 +2,8 @@
   position: relative;
   max-width: 30rem;
   border: 1px solid $color-light-grey;
+  border-radius: 10px;
+  box-shadow: 0px 25px 40px rgba(0, 0, 0, 0.05);
 }
 
 .itunes-item__toggle-favourite {
@@ -23,6 +25,10 @@
 
 .itunes-item__img-wrapper {
   display: flex;
+
+  img {
+    border-radius: 10px 10px 0 0;
+  }
 }
 
 .itunes-item__info-wrapper {
@@ -31,11 +37,14 @@
 
 .itunes-item__title {
   margin-bottom: 1rem;
+  font-size: 2rem;
 }
 
 .itunes-item__subtitle {
   color: $color-dark-grey;
   margin-bottom: 1.5rem;
+  font-weight: 500;
+  font-size: 1.5rem;
 }
 
 .itunes-item__type {
