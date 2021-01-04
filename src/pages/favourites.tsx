@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import Header from '../components/Header';
-import IonSearchBar from '../components/IonSearchBar';
 import PageTitle from '../components/PageTitle';
 
 export default function Favourites(): JSX.Element {
@@ -10,9 +9,7 @@ export default function Favourites(): JSX.Element {
         <title>Favourites page</title>
         <link rel="icon" href="/" />
       </Head>
-      <Header>
-        <IonSearchBar placeholder="Search for a favourite..." />
-      </Header>
+      <Header />
       <main>
         <PageTitle text="Favourites" />
       </main>
