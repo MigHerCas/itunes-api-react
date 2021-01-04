@@ -2,6 +2,7 @@ import Filter from './Filter';
 
 interface Props {
   filters: Array<string>;
+  filterType: 'Items' | 'Favourites';
 }
 
 export default function FilterGroup({ filters }: Props): JSX.Element {
