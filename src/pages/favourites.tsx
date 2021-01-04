@@ -1,6 +1,8 @@
+import React from 'react';
 import Head from 'next/head';
 import Header from '../components/Header';
 import PageTitle from '../components/PageTitle';
+import VisibilityFilter from '../components/VisibilityFilter';
 
 export default function Favourites(): JSX.Element {
   return (
@@ -12,6 +14,7 @@ export default function Favourites(): JSX.Element {
       <Header />
       <main>
         <PageTitle text="Favourites" />
+        <VisibilityFilter />
       </main>
     </div>
   );
