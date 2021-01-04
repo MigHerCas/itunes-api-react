@@ -24,6 +24,8 @@
 }
 
 .itunes-item__img-wrapper {
+  min-width: 30rem;
+  min-height: 30rem;
   display: flex;
 
   img {
