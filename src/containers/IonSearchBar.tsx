@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDebounce } from 'use-debounce';
 import useSearchArtist from '../hooks/useSearchArtist';
 import useGetDiscography from '../hooks/useGetDiscography';
@@ -10,6 +10,10 @@ export default function IonSearchBar(): JSX.Element {
   const [query, setQuery] = useState<string>('');
   const [debouncedQuery] = useDebounce(query, 800);
 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    setQuery(e.currentTarget.value);
+  };
+
   // The selected filter is extracted in order to fetch the right type of items from API
   const { itemsFilter } = useVisibilityFilter();
 
@@ -17,8 +21,10 @@ export default function IonSearchBar(): JSX.Element {
   const { fetchedItems } = useGetDiscography(artist.artistName, artist.artistId, itemsFilter);
   const { setItunesItems } = useStoreItems();
 
-  // After the selected type of items are fetched, they get stored inside redux state
-  setItunesItems(fetchedItems);
+  useEffect(() => {
+    // After the selected type of items are fetched, they get stored inside redux state
+    setItunesItems(fetchedItems);
+  }, [setItunesItems, fetchedItems]);
 
-  return <SearchInput query={query} onChange={(e) => setQuery(e.currentTarget.value)} />;
+  return <SearchInput query={query} onChange={handleChange} />;
 }
