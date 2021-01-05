@@ -27,15 +27,16 @@ export interface ItunesItemModel {
   id: number;
   imgUrl: string;
   title: string;
-  artist: string;
-  type: 'Album' | 'Track';
+  artistName: string;
+  artistId: number;
+  type: ItemsFilter;
   isFavourite: boolean;
 }
 
 export type StateTree = {
   itemsFilter: ItemsFilter;
   favouritesFilter: FavouritesFilter;
-  searchItems: Track[] | Album[];
+  itunesItems: ItunesItemModel[];
 };
 
 export type ItemsFilter = 'Tracks' | 'Albums';
