@@ -39,6 +39,9 @@
 .itunes-item__title {
   margin-bottom: 1rem;
   font-size: 2rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .itunes-item__subtitle {
