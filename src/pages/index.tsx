@@ -1,11 +1,22 @@
+import React from 'react';
 import Head from 'next/head';
+import FilterGroup from '../containers/FilterGroup';
+import { FAVOURITE_FILTERS, ITEMS_FILTERS } from '../constants';
+import useVisibilityFilter from '../hooks/useVisibilityFilter';
 import Header from '../components/Header';
 import PageTitle from '../components/PageTitle';
 import ItunesItems from '../components/ItunesItems';
 import ItunesItem from '../components/ItunesItem';
-import VisibilityFilter from '../components/VisibilityFilter';
+import FilterWrapper from '../components/FilterWrapper';
 
 export default function Home(): JSX.Element {
+  const {
+    itemsFilter,
+    favouritesFilter,
+    changeItemsFilter,
+    changeFavouritesFilter,
+  } = useVisibilityFilter();
+
   return (
     <div className="container">
       <Head>
@@ -15,7 +26,18 @@ export default function Home(): JSX.Element {
       <Header />
       <main>
         <PageTitle text="Results" />
-        <VisibilityFilter />
+        <FilterWrapper>
+          <FilterGroup
+            filters={ITEMS_FILTERS}
+            activeFilter={itemsFilter}
+            toggleFilterCallback={changeItemsFilter}
+          />
+          <FilterGroup
+            filters={FAVOURITE_FILTERS}
+            activeFilter={favouritesFilter}
+            toggleFilterCallback={changeFavouritesFilter}
+          />
+        </FilterWrapper>
         <ItunesItems>
           <ItunesItem
             id={0}

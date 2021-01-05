@@ -6,8 +6,8 @@ import { SET_FAVOURITES_VISIBILITY_FILTER } from '../constants';
 type HookReturns = {
   itemsFilter: ItemsFilter;
   favouritesFilter: FavouritesFilter;
-  changeItemsFilter: (filter: ItemsFilter) => void;
-  changeFavouritesFilter: (filter: FavouritesFilter) => void;
+  changeItemsFilter: <T>(filter: T) => void;
+  changeFavouritesFilter: <T>(filter: T) => void;
 };
 
 const useVisibilityFilter = (): HookReturns => {
@@ -16,7 +16,7 @@ const useVisibilityFilter = (): HookReturns => {
 
   const dispatch = useDispatch();
 
-  const changeItemsFilter = (filter: ItemsFilter): void => {
+  const changeItemsFilter = <ItemsFilter>(filter: ItemsFilter): void => {
     console.log(filter);
     dispatch({
       type: SET_ITEMS_VISIBILITY_FILTER,
@@ -24,7 +24,7 @@ const useVisibilityFilter = (): HookReturns => {
     });
   };
 
-  const changeFavouritesFilter = (filter: FavouritesFilter): void => {
+  const changeFavouritesFilter = <FavouritesFilter>(filter: FavouritesFilter): void => {
     console.log(filter);
     dispatch({
       type: SET_FAVOURITES_VISIBILITY_FILTER,

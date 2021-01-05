@@ -1,10 +1,14 @@
 import React from 'react';
 import Head from 'next/head';
+import useVisibilityFilter from '../hooks/useVisibilityFilter';
+import { ITEMS_FILTERS } from '../constants';
 import Header from '../components/Header';
 import PageTitle from '../components/PageTitle';
-import VisibilityFilter from '../components/VisibilityFilter';
+import FilterWrapper from '../components/FilterWrapper';
+import FilterGroup from '../containers/FilterGroup';
 
 export default function Favourites(): JSX.Element {
+  const { itemsFilter, changeItemsFilter } = useVisibilityFilter();
   return (
     <div>
       <Head>
@@ -14,7 +18,13 @@ export default function Favourites(): JSX.Element {
       <Header />
       <main>
         <PageTitle text="Favourites" />
-        <VisibilityFilter />
+        <FilterWrapper>
+          <FilterGroup
+            filters={ITEMS_FILTERS}
+            activeFilter={itemsFilter}
+            toggleFilterCallback={changeItemsFilter}
+          />
+        </FilterWrapper>
       </main>
     </div>
   );
