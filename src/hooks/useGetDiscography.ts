@@ -1,3 +1,4 @@
+import { ItemsFilter } from './../models/index';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { Album, Track } from '../models';
@@ -9,24 +10,14 @@ type HookReturns = {
   isLoading: boolean;
 };
 
-type ArtistContent = 'Tracks' | 'Albums';
-
-const filterItems = (
-  items: Array<Track | Album>,
-  artistId: number,
-  itemsType: ArtistContent
-): Array<Track | Album> => {
-  if (itemsType === 'Albums') {
-    return (items as Track[]).filter((item) => item.artistId === artistId);
-  } else {
-    return (items as Album[]).filter((item) => item.artistId === artistId);
-  }
+const filterItems = <T extends Track | Album>(items: Array<T>, artistId: number): Array<T> => {
+  return items.filter((item) => item.artistId === artistId);
 };
 
 const useGetDiscography = (
   artistName: string,
   artistId: number,
-  typeOfItems: ArtistContent
+  typeOfItems: ItemsFilter
 ): HookReturns => {
   const [items, setItems] = useState<Array<Track | Album>>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -47,7 +38,7 @@ const useGetDiscography = (
       })
       .then((response) => {
         console.log(response.data.results);
-        const filteredItems = filterItems(response.data.results, artistId, typeOfItems);
+        const filteredItems = filterItems(response.data.results, artistId);
         setItems(filteredItems);
       })
       .catch((err) => console.log(err));
