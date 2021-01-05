@@ -36,12 +36,16 @@
   padding: 1.5rem 2rem;
 }
 
-.itunes-item__title {
-  margin-bottom: 1rem;
-  font-size: 2rem;
+.itunes-item__title,
+.itunes-item__subtitle {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+}
+
+.itunes-item__title {
+  margin-bottom: 1rem;
+  font-size: 2rem;
 }
 
 .itunes-item__subtitle {
