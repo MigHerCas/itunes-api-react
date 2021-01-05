@@ -35,7 +35,8 @@ export interface ItunesItemModel {
 export type StateTree = {
   itemsFilter: ItemsFilter;
   favouritesFilter: FavouritesFilter;
+  searchItems: Track[] | Album[];
 };
 
-export type ItemsFilter = 'Track' | 'Albums' | 'All';
+export type ItemsFilter = 'Tracks' | 'Albums';
 export type FavouritesFilter = 'Only favourites' | 'Non favourites' | 'All';

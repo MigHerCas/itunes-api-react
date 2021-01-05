@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import IonSearchBar from './IonSearchBar';
+import IonSearchBar from '../containers/IonSearchBar';
 import CustomIcon from '../utils/CustomIcon';
 import { mdiHomeCircle } from '@mdi/js';
 import { mdiCardsHeart } from '@mdi/js';
@@ -14,7 +14,7 @@ export default function Header(): JSX.Element {
             <CustomIcon path={mdiHomeCircle} fill="#fff" />
           </a>
         </Link>
-        <IonSearchBar placeholder="Search for an artist" />
+        <IonSearchBar />
         <div className="header__favourites-badge">
           <Link href="/favourites">
             <a>
