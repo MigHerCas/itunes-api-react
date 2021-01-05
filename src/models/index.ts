@@ -31,3 +31,11 @@ export interface ItunesItemModel {
   type: 'Album' | 'Track';
   isFavourite: boolean;
 }
+
+export type StateTree = {
+  itemsFilter: ItemsFilter;
+  favouritesFilter: FavouritesFilter;
+};
+
+export type ItemsFilter = 'Track' | 'Albums' | 'All';
+export type FavouritesFilter = 'Only favourites' | 'Non favourites' | 'All';
