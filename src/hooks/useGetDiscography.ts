@@ -1,16 +1,16 @@
-import { ItemsFilter } from './../models/index';
 import axios from 'axios';
-import { useState, useEffect } from 'react';
-import { Album, Track } from '../models';
+import { useEffect, useState } from 'react';
+import parseItems from '../utils/ParseItems';
+import { ItemsFilter, ItunesItemModel } from './../models/index';
 
 const { BASE_API_URL } = process.env;
 
 type HookReturns = {
-  items: Array<Track | Album>;
+  fetchedItems: Array<ItunesItemModel>;
   isLoading: boolean;
 };
 
-const filterItems = <T extends Track | Album>(items: Array<T>, artistId: number): Array<T> => {
+const filterItems = (items: Array<ItunesItemModel>, artistId: number): Array<ItunesItemModel> => {
   return items.filter((item) => item.artistId === artistId);
 };
 
@@ -19,7 +19,7 @@ const useGetDiscography = (
   artistId: number,
   typeOfItems: ItemsFilter
 ): HookReturns => {
-  const [items, setItems] = useState<Array<Track | Album>>([]);
+  const [fetchedItems, setFetchedItems] = useState<ItunesItemModel[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
@@ -34,8 +34,10 @@ const useGetDiscography = (
           },
         })
         .then((response) => {
-          const filteredItems = filterItems(response.data.results, artistId);
-          setItems(filteredItems);
+          console.log(response.data.results);
+          const parsedItems = parseItems(response.data.results, typeOfItems);
+          const filteredItems = filterItems(parsedItems, artistId);
+          setFetchedItems(filteredItems);
         })
         .catch((err) => console.log(err));
     }
@@ -47,7 +49,7 @@ const useGetDiscography = (
     }
   }, [artistName, typeOfItems, artistId]);
 
-  return { items, isLoading };
+  return { fetchedItems, isLoading };
 };
 
 export default useGetDiscography;
