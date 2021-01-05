@@ -1,11 +1,17 @@
+import { FavouritesFilter, ItemsFilter } from '../models';
+
 interface Props {
-  filterType: string;
+  filterOption: ItemsFilter | FavouritesFilter;
+  isActive: boolean;
+  onClick: (filter: ItemsFilter | FavouritesFilter) => void;
 }
 
-export default function Filter({ filterType }: Props): JSX.Element {
+export default function Filter({ filterOption, isActive, onClick }: Props): JSX.Element {
   return (
-    <li className="filter-item">
-      <button className="filter-button">{filterType}</button>
+    <li className={`filter-item ${isActive ? 'isActive' : ''}`}>
+      <button className="filter-button" onClick={() => onClick(filterOption)}>
+        {filterOption}
+      </button>
     </li>
   );
 }

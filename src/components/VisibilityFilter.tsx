@@ -1,9 +1,9 @@
-import React from 'react';
-import FilterGroup from './FilterGroup';
+import { FavouritesFilter, ItemsFilter } from '../models';
+import FilterGroup from '../containers/FilterGroup';
 
 export default function VisibilityFilter(): JSX.Element {
-  const itemsFilters = ['Track', 'Albums', 'All'];
-  const favouritesFilters = ['Only favourites', 'Non favourites', 'All'];
+  const itemsFilters: ItemsFilter[] = ['Track', 'Albums', 'All'];
+  const favouritesFilters: FavouritesFilter[] = ['Only favourites', 'Non favourites', 'All'];
 
   return (
     <nav className="visibility-filter">
