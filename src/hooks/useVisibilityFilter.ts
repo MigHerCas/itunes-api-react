@@ -17,7 +17,6 @@ const useVisibilityFilter = (): HookReturns => {
   const dispatch = useDispatch();
 
   const changeItemsFilter = <ItemsFilter>(filter: ItemsFilter): void => {
-    console.log(filter);
     dispatch({
       type: SET_ITEMS_VISIBILITY_FILTER,
       itemsFilter: filter,
@@ -25,7 +24,6 @@ const useVisibilityFilter = (): HookReturns => {
   };
 
   const changeFavouritesFilter = <FavouritesFilter>(filter: FavouritesFilter): void => {
-    console.log(filter);
     dispatch({
       type: SET_FAVOURITES_VISIBILITY_FILTER,
       favouritesFilter: filter,
