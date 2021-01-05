@@ -1,14 +1,19 @@
 import { useMemo } from 'react';
 import { createStore, applyMiddleware, Store, AnyAction } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import { SET_FAVOURITES_VISIBILITY_FILTER, SET_ITEMS_VISIBILITY_FILTER } from '../constants';
+import {
+  SET_FAVOURITES_VISIBILITY_FILTER,
+  SET_ITEMS_VISIBILITY_FILTER,
+  SET_SEARCH_ITEMS,
+} from '../constants';
 import { StateTree } from '../models';
 
 let store: Store | undefined;
 
 const initialState: StateTree = {
-  itemsFilter: 'All',
+  itemsFilter: 'Tracks',
   favouritesFilter: 'All',
+  searchItems: [],
 };
 
 const reducer = (state: StateTree = initialState, action: AnyAction): StateTree => {
@@ -17,6 +22,8 @@ const reducer = (state: StateTree = initialState, action: AnyAction): StateTree 
       return { ...state, itemsFilter: action.itemsFilter };
     case SET_FAVOURITES_VISIBILITY_FILTER:
       return { ...state, favouritesFilter: action.favouritesFilter };
+    case SET_SEARCH_ITEMS:
+      return { ...state, searchItems: action.searchItems };
     default:
       return state;
   }
