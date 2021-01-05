@@ -4,7 +4,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import {
   SET_FAVOURITES_VISIBILITY_FILTER,
   SET_ITEMS_VISIBILITY_FILTER,
-  SET_SEARCH_ITEMS,
+  SET_ITUNES_ITEMS,
 } from '../constants';
 import { StateTree } from '../models';
 
@@ -13,7 +13,7 @@ let store: Store | undefined;
 const initialState: StateTree = {
   itemsFilter: 'Tracks',
   favouritesFilter: 'All',
-  searchItems: [],
+  itunesItems: [],
 };
 
 const reducer = (state: StateTree = initialState, action: AnyAction): StateTree => {
@@ -22,8 +22,8 @@ const reducer = (state: StateTree = initialState, action: AnyAction): StateTree 
       return { ...state, itemsFilter: action.itemsFilter };
     case SET_FAVOURITES_VISIBILITY_FILTER:
       return { ...state, favouritesFilter: action.favouritesFilter };
-    case SET_SEARCH_ITEMS:
-      return { ...state, searchItems: action.searchItems };
+    case SET_ITUNES_ITEMS:
+      return { ...state, itunesItems: action.itunesItems };
     default:
       return state;
   }

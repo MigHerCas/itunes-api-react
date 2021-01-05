@@ -1,25 +1,25 @@
 import React from 'react';
 import ItunesItem from '../components/ItunesItem';
-import { Album, Track } from '../models';
+import useStoreItems from '../hooks/useStoreItems';
 
-interface Props {
-  itunesItems: Array<Track | Album>;
-}
+export default function ItunesItems(): JSX.Element {
+  const { itunesItems } = useStoreItems();
 
-export default function ItunesItems({ itunesItems }: Props): JSX.Element {
   return (
     <ol className="grid itunes-items">
       {itunesItems &&
-        itunesItems.map(({ artistId, artistName, artworkUrl100 }) => {
+        itunesItems.map((itunesItem) => {
+          const { artistId, artistName, id, imgUrl, isFavourite, title, type } = itunesItem;
           return (
             <ItunesItem
-              key={artistId}
-              id={artistId}
-              title="Title example"
-              artist={artistName}
-              isFavourite={false}
-              type="Track"
-              imgUrl={artworkUrl100}
+              key={id}
+              id={id}
+              title={title}
+              artistName={artistName}
+              artistId={artistId}
+              isFavourite={isFavourite}
+              type={type}
+              imgUrl={imgUrl}
             />
           );
         })}

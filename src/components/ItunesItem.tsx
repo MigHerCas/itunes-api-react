@@ -6,7 +6,7 @@ import Image from 'next/image';
 export default function ItunesItem({
   imgUrl,
   title,
-  artist,
+  artistName,
   isFavourite,
   type,
 }: ItunesItemModel): JSX.Element {
@@ -23,11 +23,18 @@ export default function ItunesItem({
         </button>
       </div>
       <div className="itunes-item__img-wrapper">
-        <Image src={imgUrl} alt="Itunes item cover" width={300} height={300} priority />
+        <Image
+          src={imgUrl}
+          alt="Itunes item cover"
+          width={300}
+          height={300}
+          objectFit={'cover'}
+          priority
+        />
       </div>
       <div className="itunes-item__info-wrapper">
         <h2 className="itunes-item__title">{title}</h2>
-        <h3 className="itunes-item__subtitle">{artist}</h3>
+        <h3 className="itunes-item__subtitle">{artistName}</h3>
         <span className={`itunes-item__type itunes-item__type--${type}`}>{type}</span>
       </div>
     </li>
