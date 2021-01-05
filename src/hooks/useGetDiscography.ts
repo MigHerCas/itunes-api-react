@@ -34,7 +34,6 @@ const useGetDiscography = (
           },
         })
         .then((response) => {
-          console.log(response.data.results);
           const parsedItems = parseItems(response.data.results, typeOfItems);
           const filteredItems = filterItems(parsedItems, artistId);
           setFetchedItems(filteredItems);
