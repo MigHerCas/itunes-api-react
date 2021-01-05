@@ -5,12 +5,11 @@ import Head from 'next/head';
 import { FAVOURITE_FILTERS, ITEMS_FILTERS } from '../constants';
 
 // Custom Hooks
-// import useItunesItems from '../hooks/useItunesItems';
 import useVisibilityFilter from '../hooks/useVisibilityFilter';
 
 // Containers (redux logic inside)
 import FilterGroup from '../containers/FilterGroup';
-// import ItunesItems from '../containers/ItunesItems';
+import ItunesItems from '../containers/ItunesItems';
 
 // Components (no logic, only visual)
 import Header from '../components/Header';
@@ -47,7 +46,7 @@ export default function Home(): JSX.Element {
             toggleFilterCallback={changeFavouritesFilter}
           />
         </FilterWrapper>
-        {/* <ItunesItems itunesItems={itunesItems} /> */}
+        <ItunesItems />
       </main>
     </div>
   );
