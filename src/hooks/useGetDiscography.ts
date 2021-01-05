@@ -22,28 +22,29 @@ const useGetDiscography = (
   const [items, setItems] = useState<Array<Track | Album>>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  console.log('Artist name:', artistName);
-  console.log('Artist id:', artistId);
-
   useEffect(() => {
-    setIsLoading(true);
-    axios
-      .get(`${BASE_API_URL}`, {
-        params: {
-          term: artistName,
-          entity: typeOfItems === 'Tracks' ? 'musicTrack' : 'album',
-          country: 'es',
-          attribute: 'artistTerm',
-        },
-      })
-      .then((response) => {
-        console.log(response.data.results);
-        const filteredItems = filterItems(response.data.results, artistId);
-        setItems(filteredItems);
-      })
-      .catch((err) => console.log(err));
+    async function fetchDiscography(): Promise<void> {
+      await axios
+        .get(`${BASE_API_URL}`, {
+          params: {
+            term: artistName,
+            entity: typeOfItems === 'Tracks' ? 'musicTrack' : 'album',
+            country: 'es',
+            attribute: 'artistTerm',
+          },
+        })
+        .then((response) => {
+          const filteredItems = filterItems(response.data.results, artistId);
+          setItems(filteredItems);
+        })
+        .catch((err) => console.log(err));
+    }
 
-    setIsLoading(false);
+    if (artistName && typeOfItems) {
+      setIsLoading(true);
+      fetchDiscography();
+      setIsLoading(false);
+    }
   }, [artistName, typeOfItems, artistId]);
 
   return { items, isLoading };

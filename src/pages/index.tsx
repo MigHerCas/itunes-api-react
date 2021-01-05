@@ -1,15 +1,24 @@
 import React from 'react';
 import Head from 'next/head';
-import FilterGroup from '../containers/FilterGroup';
+
+// Constants
 import { FAVOURITE_FILTERS, ITEMS_FILTERS } from '../constants';
+
+// Custom Hooks
+// import useItunesItems from '../hooks/useItunesItems';
 import useVisibilityFilter from '../hooks/useVisibilityFilter';
+
+// Containers (redux logic inside)
+import FilterGroup from '../containers/FilterGroup';
+// import ItunesItems from '../containers/ItunesItems';
+
+// Components (no logic, only visual)
 import Header from '../components/Header';
 import PageTitle from '../components/PageTitle';
-import ItunesItems from '../components/ItunesItems';
-import ItunesItem from '../components/ItunesItem';
 import FilterWrapper from '../components/FilterWrapper';
 
 export default function Home(): JSX.Element {
+  // Redux communicates with containers and components through these custom hooks
   const {
     itemsFilter,
     favouritesFilter,
@@ -38,24 +47,7 @@ export default function Home(): JSX.Element {
             toggleFilterCallback={changeFavouritesFilter}
           />
         </FilterWrapper>
-        <ItunesItems>
-          <ItunesItem
-            id={0}
-            title="Title example"
-            artist="Subtitle example"
-            isFavourite={false}
-            type="Track"
-            imgUrl="http://unsplash.it/1400?random&gravity=center"
-          />
-          <ItunesItem
-            id={1}
-            title="Title example"
-            artist="Subtitle example"
-            isFavourite={true}
-            type="Album"
-            imgUrl="http://unsplash.it/1500?random&gravity=center"
-          />
-        </ItunesItems>
+        {/* <ItunesItems itunesItems={itunesItems} /> */}
       </main>
     </div>
   );

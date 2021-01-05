@@ -9,32 +9,41 @@ type ArtistSearchApiResponse = {
 };
 
 type HookReturns = {
-  artists: Artist[];
+  artist: Artist;
   isLoading: boolean;
 };
 
 const useSearchArtist = (query: string): HookReturns => {
-  const [artists, setArtists] = useState<Artist[]>([]);
+  const [artist, setArtist] = useState<Artist>({
+    artistId: 0,
+    artistName: '',
+    artistLinkUrl: '',
+  });
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
-    setIsLoading(true);
-    axios
-      .get<ArtistSearchApiResponse>(`${BASE_API_URL}`, {
-        params: {
-          term: query,
-          entity: 'musicArtist',
-          country: 'es',
-          attribute: 'allArtistTerm',
-        },
-      })
-      .then((response) => setArtists(response.data.results))
-      .catch((err) => console.log(err));
+    async function fetchArtist(): Promise<void> {
+      axios
+        .get<ArtistSearchApiResponse>(`${BASE_API_URL}`, {
+          params: {
+            term: query,
+            entity: 'musicArtist',
+            country: 'es',
+            attribute: 'allArtistTerm',
+          },
+        })
+        .then((response) => setArtist(response.data.results[0]))
+        .catch((err) => console.log(err));
+    }
 
-    setIsLoading(false);
+    if (query) {
+      setIsLoading(true);
+      fetchArtist();
+      setIsLoading(false);
+    }
   }, [query]);
 
-  return { artists, isLoading };
+  return { artist, isLoading };
 };
 
 export default useSearchArtist;

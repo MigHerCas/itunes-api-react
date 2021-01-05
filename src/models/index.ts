@@ -1,6 +1,6 @@
 export interface Artist {
   artistId: number;
-  artistName: 'David Bowie';
+  artistName: string;
   artistLinkUrl: string;
 }
 
