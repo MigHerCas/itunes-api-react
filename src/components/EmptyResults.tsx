@@ -1,7 +1,10 @@
-import EmptyIllustration from '../../public/empty.svg';
+import { useRouter } from 'next/router';
+import EmptyIllustrationHome from '../../public/emptyHome.svg';
+import EmptyIllustrationFavourites from '../../public/emptyFavourites.svg';
 import Image from 'next/image';
 
 export default function EmptyResults(): JSX.Element {
+  const router = useRouter();
   return (
     <div
       style={{
@@ -10,7 +13,7 @@ export default function EmptyResults(): JSX.Element {
       }}
     >
       <Image
-        src={EmptyIllustration}
+        src={router.pathname === '/' ? EmptyIllustrationHome : EmptyIllustrationFavourites}
         width={500}
         height={500}
         layout={'intrinsic'}

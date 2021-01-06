@@ -6,6 +6,7 @@ import Header from '../components/Header';
 import PageTitle from '../components/PageTitle';
 import FilterWrapper from '../components/FilterWrapper';
 import FilterGroup from '../containers/FilterGroup';
+import ItunesItems from '../containers/ItunesItems';
 
 export default function Favourites(): JSX.Element {
   const { itemsFilter, changeItemsFilter } = useVisibilityFilter();
@@ -25,6 +26,7 @@ export default function Favourites(): JSX.Element {
             toggleFilterCallback={changeItemsFilter}
           />
         </FilterWrapper>
+        <ItunesItems />
       </main>
     </div>
   );
