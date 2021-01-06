@@ -17,7 +17,8 @@ const filterItems = (items: Array<ItunesItemModel>, artistId: number): Array<Itu
 const useGetDiscography = (
   artistName: string,
   artistId: number,
-  typeOfItems: ItemsFilter
+  typeOfItems: ItemsFilter,
+  onToggle: (id: number) => void
 ): HookReturns => {
   const [fetchedItems, setFetchedItems] = useState<ItunesItemModel[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -34,7 +35,7 @@ const useGetDiscography = (
           },
         })
         .then((response) => {
-          const parsedItems = parseItems(response.data.results, typeOfItems);
+          const parsedItems = parseItems(response.data.results, typeOfItems, onToggle);
           const filteredItems = filterItems(parsedItems, artistId);
           setFetchedItems(filteredItems);
         })
