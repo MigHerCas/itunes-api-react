@@ -26,6 +26,7 @@
   .filter-item.isActive .filter-button {
     background-color: $color-itunes-blue;
     color: $color-white;
+    pointer-events: none;
   }
 
   .filter-button {
