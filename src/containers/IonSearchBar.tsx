@@ -5,6 +5,7 @@ import useGetDiscography from '../hooks/useGetDiscography';
 import useVisibilityFilter from '../hooks/useVisibilityFilter';
 import SearchInput from '../components/SearchInput';
 import useStoreItems from '../hooks/useStoreItems';
+import useToggleFavourite from '../hooks/useToggleFavourite';
 
 export default function IonSearchBar(): JSX.Element {
   const [query, setQuery] = useState<string>('');
@@ -17,13 +18,21 @@ export default function IonSearchBar(): JSX.Element {
   // The selected filter is extracted in order to fetch the right type of items from API
   const { itemsFilter } = useVisibilityFilter();
 
+  const { toggleFavourite } = useToggleFavourite();
   const { artist } = useSearchArtist(debouncedQuery);
-  const { fetchedItems } = useGetDiscography(artist.artistName, artist.artistId, itemsFilter);
+  const { fetchedItems } = useGetDiscography(
+    artist.artistName,
+    artist.artistId,
+    itemsFilter,
+    toggleFavourite
+  );
   const { setItunesItems } = useStoreItems();
 
   useEffect(() => {
-    // After the selected type of items are fetched, they get stored inside redux state
-    setItunesItems(fetchedItems);
+    if (fetchedItems) {
+      // After the selected type of items are fetched, they get stored inside redux state
+      setItunesItems(fetchedItems);
+    }
   }, [setItunesItems, fetchedItems]);
 
   return <SearchInput query={query} onChange={handleChange} />;

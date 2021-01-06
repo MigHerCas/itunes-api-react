@@ -31,6 +31,7 @@ export interface ItunesItemModel {
   artistId: number;
   type: ItemsFilter;
   isFavourite: boolean;
+  onToggle: (id: number) => void;
 }
 
 export type StateTree = {

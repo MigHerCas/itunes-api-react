@@ -5,6 +5,7 @@ import {
   SET_FAVOURITES_VISIBILITY_FILTER,
   SET_ITEMS_VISIBILITY_FILTER,
   SET_ITUNES_ITEMS,
+  TOGGLE_FAVOURITE,
 } from '../constants';
 import { StateTree } from '../models';
 
@@ -16,6 +17,21 @@ const initialState: StateTree = {
   itunesItems: [],
 };
 
+const toggleFavourite = (state: StateTree = initialState, id: number): StateTree => {
+  const updatedItunesItems = state.itunesItems.map((itunesItem) => {
+    const toggledItuneItem = { ...itunesItem };
+    if (id === itunesItem.id) {
+      toggledItuneItem.isFavourite = !itunesItem.isFavourite;
+    }
+    return toggledItuneItem;
+  });
+
+  return {
+    ...state,
+    itunesItems: updatedItunesItems,
+  };
+};
+
 const reducer = (state: StateTree = initialState, action: AnyAction): StateTree => {
   switch (action.type) {
     case SET_ITEMS_VISIBILITY_FILTER:
@@ -24,6 +40,8 @@ const reducer = (state: StateTree = initialState, action: AnyAction): StateTree 
       return { ...state, favouritesFilter: action.favouritesFilter };
     case SET_ITUNES_ITEMS:
       return { ...state, itunesItems: action.itunesItems };
+    case TOGGLE_FAVOURITE:
+      return toggleFavourite(state, action.id);
     default:
       return state;
   }

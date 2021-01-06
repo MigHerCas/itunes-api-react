@@ -2,7 +2,8 @@ import { Album, ItemsFilter, ItunesItemModel, Track } from '../models';
 
 const parseItems = (
   rawItems: Array<Track | Album>,
-  typeOfItems: ItemsFilter
+  typeOfItems: ItemsFilter,
+  onToggle: (id: number) => void
 ): Array<ItunesItemModel> => {
   switch (typeOfItems) {
     case 'Tracks':
@@ -20,6 +21,7 @@ const parseItems = (
             isFavourite: false,
             title: trackName,
             type: typeOfItems,
+            onToggle: onToggle,
           };
         }
       );
@@ -38,6 +40,7 @@ const parseItems = (
             isFavourite: false,
             title: collectionName,
             type: typeOfItems,
+            onToggle: onToggle,
           };
         }
       );

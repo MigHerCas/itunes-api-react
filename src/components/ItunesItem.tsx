@@ -4,16 +4,18 @@ import CustomIcon from '../utils/CustomIcon';
 import Image from 'next/image';
 
 export default function ItunesItem({
+  id,
   imgUrl,
   title,
   artistName,
   isFavourite,
   type,
+  onToggle,
 }: ItunesItemModel): JSX.Element {
   return (
     <li className="itunes-item">
       <div className="itunes-item__toggle-favourite">
-        <button>
+        <button onClick={() => onToggle(id)}>
           <CustomIcon
             stroke="#ffd60a"
             path={mdiCardsHeart}
