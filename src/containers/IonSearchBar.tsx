@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDebounce } from 'use-debounce';
 import SearchInput from '../components/SearchInput';
 import useFetchArtist from '../hooks/useFetchArtist';
@@ -14,7 +14,7 @@ export default function IonSearchBar(): JSX.Element {
     setDebouncedQuery(debouncedQuery);
   }, [debouncedQuery, setDebouncedQuery]);
 
-  useMemo(() => {
+  useEffect(() => {
     if (selectedArtist && storedArtist !== selectedArtist) {
       storeArtist(selectedArtist);
     }
