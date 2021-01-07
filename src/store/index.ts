@@ -18,6 +18,7 @@ const initialState: StateTree = {
     artistName: '',
     artistLinkUrl: '',
   },
+  favourites: [],
 };
 
 const reducer = (state: StateTree = initialState, action: AnyAction): StateTree => {

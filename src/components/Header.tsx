@@ -1,11 +1,13 @@
-import React from 'react';
+import { mdiCardsHeart, mdiHomeCircle } from '@mdi/js';
 import Link from 'next/link';
+import React from 'react';
 import IonSearchBar from '../containers/IonSearchBar';
+import useFavourites from '../hooks/useFavourites';
 import CustomIcon from '../utils/CustomIcon';
-import { mdiHomeCircle } from '@mdi/js';
-import { mdiCardsHeart } from '@mdi/js';
 
 export default function Header(): JSX.Element {
+  const { favourites } = useFavourites();
+
   return (
     <header>
       <nav className="header-nav">
@@ -20,7 +22,7 @@ export default function Header(): JSX.Element {
             <a>
               <CustomIcon path={mdiCardsHeart} fill="#fff" />
               <div className="header__favourites-counter">
-                <span>3</span>
+                <span>{favourites.length}</span>
               </div>
             </a>
           </Link>

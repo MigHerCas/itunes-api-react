@@ -2,6 +2,7 @@ export type StateTree = {
   itemsFilter: ItemsFilter;
   favouritesFilter: FavouritesFilter;
   selectedArtist: Artist;
+  favourites: ItunesItemModel[];
 };
 
 export interface Artist {
@@ -36,7 +37,6 @@ export interface ItunesItemModel {
   artistName: string;
   artistId: number;
   type: ItemsFilter;
-  isFavourite: boolean;
 }
 
 export type ItemsFilter = 'Tracks' | 'Albums';

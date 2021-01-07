@@ -8,20 +8,19 @@ export default function ItunesItem({
   imgUrl,
   title,
   artistName,
-  isFavourite,
   type,
 }: ItunesItemModel): JSX.Element {
-  const [isItemFavourite, setIsItemFavourite] = useState<boolean>(isFavourite);
+  const [isFavourite] = useState<boolean>(false);
 
   return (
     <li className="itunes-item">
       <div className="itunes-item__toggle-favourite">
-        <button onClick={() => setIsItemFavourite((previousState) => !previousState)}>
+        <button>
           <CustomIcon
             stroke="#ffd60a"
             path={mdiCardsHeart}
             size={2}
-            fill={isItemFavourite ? '#ffcc00' : 'transparent'}
+            fill={isFavourite ? '#ffcc00' : 'transparent'}
           />
         </button>
       </div>

@@ -11,7 +11,7 @@ export default function ItunesItems(): JSX.Element {
   return (
     <ol className="grid itunes-items">
       {discography.map((itunesItem) => {
-        const { artistId, artistName, id, imgUrl, isFavourite, title, type } = itunesItem;
+        const { artistId, artistName, id, imgUrl, title, type } = itunesItem;
         return (
           <ItunesItem
             key={id}
@@ -19,7 +19,6 @@ export default function ItunesItems(): JSX.Element {
             title={title}
             artistName={artistName}
             artistId={artistId}
-            isFavourite={isFavourite}
             type={type}
             imgUrl={imgUrl}
           />

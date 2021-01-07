@@ -17,7 +17,6 @@ const parseItems = (
             artistId: artistId,
             id: trackId,
             imgUrl: biggerImage,
-            isFavourite: false,
             title: trackName,
             type: typeOfItems,
           };
@@ -35,7 +34,6 @@ const parseItems = (
             artistId: artistId,
             id: collectionId,
             imgUrl: biggerImage,
-            isFavourite: false,
             title: collectionName,
             type: typeOfItems,
           };
