@@ -1,27 +1,28 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useDebounce } from 'use-debounce';
-import fetchArtist from '../api/fetchArtist';
 import SearchInput from '../components/SearchInput';
+import useFetchArtist from '../hooks/useFetchArtist';
 import useStoreArtist from '../hooks/useStoreArtist';
 
 export default function IonSearchBar(): JSX.Element {
   const [query, setQuery] = useState<string>('');
   const [debouncedQuery] = useDebounce(query, 800);
+  const { selectedArtist, setDebouncedQuery } = useFetchArtist();
+  const { storedArtist, storeArtist } = useStoreArtist();
+
+  useEffect(() => {
+    setDebouncedQuery(debouncedQuery);
+  }, [debouncedQuery, setDebouncedQuery]);
+
+  useMemo(() => {
+    if (selectedArtist && storedArtist !== selectedArtist) {
+      storeArtist(selectedArtist);
+    }
+  }, [selectedArtist, storeArtist, storedArtist]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setQuery(e.currentTarget.value);
   };
-
-  const artist = fetchArtist(debouncedQuery);
-  const { storeSelectedArtist } = useStoreArtist();
-
-  console.log(artist);
-  useMemo(() => {
-    // Artist stored inside state tree when fetched correctly
-    if (artist) {
-      storeSelectedArtist(artist);
-    }
-  }, [artist, storeSelectedArtist]);
 
   return <SearchInput query={query} onChange={handleChange} />;
 }
