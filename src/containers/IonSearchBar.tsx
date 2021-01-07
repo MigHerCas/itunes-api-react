@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useDebounce } from 'use-debounce';
-import useSearchArtist from '../hooks/useSearchArtist';
-import useGetDiscography from '../hooks/useGetDiscography';
-import useVisibilityFilter from '../hooks/useVisibilityFilter';
 import SearchInput from '../components/SearchInput';
-import useStoreItems from '../hooks/useStoreItems';
-import useToggleFavourite from '../hooks/useToggleFavourite';
+import { SET_SELECTED_ARTIST } from '../constants';
+import useSearchArtist from '../hooks/useSearchArtist';
 
 export default function IonSearchBar(): JSX.Element {
+  const dispatch = useDispatch();
   const [query, setQuery] = useState<string>('');
   const [debouncedQuery] = useDebounce(query, 800);
 
@@ -15,25 +14,13 @@ export default function IonSearchBar(): JSX.Element {
     setQuery(e.currentTarget.value);
   };
 
-  // The selected filter is extracted in order to fetch the right type of items from API
-  const { itemsFilter } = useVisibilityFilter();
-
-  const { toggleFavourite } = useToggleFavourite();
   const { artist } = useSearchArtist(debouncedQuery);
-  const { fetchedItems } = useGetDiscography(
-    artist.artistName,
-    artist.artistId,
-    itemsFilter,
-    toggleFavourite
-  );
-  const { setItunesItems } = useStoreItems();
 
-  useEffect(() => {
-    if (fetchedItems) {
-      // After the selected type of items are fetched, they get stored inside redux state
-      setItunesItems(fetchedItems);
-    }
-  }, [setItunesItems, fetchedItems]);
+  // Artist stored inside state tree
+  dispatch({
+    type: SET_SELECTED_ARTIST,
+    selectedArtist: artist,
+  });
 
   return <SearchInput query={query} onChange={handleChange} />;
 }

@@ -6,6 +6,7 @@ import {
   SET_ITEMS_VISIBILITY_FILTER,
   SET_ITUNES_ITEMS,
   TOGGLE_FAVOURITE,
+  SET_SELECTED_ARTIST,
 } from '../constants';
 import { StateTree } from '../models';
 
@@ -14,6 +15,7 @@ let store: Store | undefined;
 const initialState: StateTree = {
   itemsFilter: 'Tracks',
   favouritesFilter: 'All',
+  selectedArtist: null,
   itunesItems: [],
 };
 
@@ -40,6 +42,8 @@ const reducer = (state: StateTree = initialState, action: AnyAction): StateTree 
       return { ...state, favouritesFilter: action.favouritesFilter };
     case SET_ITUNES_ITEMS:
       return { ...state, itunesItems: action.itunesItems };
+    case SET_SELECTED_ARTIST:
+      return { ...state, selectedArtist: action.artist };
     case TOGGLE_FAVOURITE:
       return toggleFavourite(state, action.id);
     default:
