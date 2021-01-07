@@ -4,8 +4,6 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import {
   SET_FAVOURITES_VISIBILITY_FILTER,
   SET_ITEMS_VISIBILITY_FILTER,
-  SET_ITUNES_ITEMS,
-  TOGGLE_FAVOURITE,
   SET_SELECTED_ARTIST,
 } from '../constants';
 import { StateTree } from '../models';
@@ -20,22 +18,6 @@ const initialState: StateTree = {
     artistName: '',
     artistLinkUrl: '',
   },
-  itunesItems: [],
-};
-
-const toggleFavourite = (state: StateTree = initialState, id: number): StateTree => {
-  const updatedItunesItems = state.itunesItems.map((itunesItem) => {
-    const toggledItuneItem = { ...itunesItem };
-    if (id === itunesItem.id) {
-      toggledItuneItem.isFavourite = !itunesItem.isFavourite;
-    }
-    return toggledItuneItem;
-  });
-
-  return {
-    ...state,
-    itunesItems: updatedItunesItems,
-  };
 };
 
 const reducer = (state: StateTree = initialState, action: AnyAction): StateTree => {
@@ -44,12 +26,8 @@ const reducer = (state: StateTree = initialState, action: AnyAction): StateTree 
       return { ...state, itemsFilter: action.itemsFilter };
     case SET_FAVOURITES_VISIBILITY_FILTER:
       return { ...state, favouritesFilter: action.favouritesFilter };
-    case SET_ITUNES_ITEMS:
-      return { ...state, itunesItems: action.itunesItems };
     case SET_SELECTED_ARTIST:
       return { ...state, selectedArtist: action.artist };
-    case TOGGLE_FAVOURITE:
-      return toggleFavourite(state, action.id);
     default:
       return state;
   }

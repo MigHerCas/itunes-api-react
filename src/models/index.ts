@@ -2,7 +2,6 @@ export type StateTree = {
   itemsFilter: ItemsFilter;
   favouritesFilter: FavouritesFilter;
   selectedArtist: Artist;
-  itunesItems: ItunesItemModel[];
 };
 
 export interface Artist {
