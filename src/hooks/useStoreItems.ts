@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { StateTree } from '../models';
 
 type HookReturns = {
-  itunesItems: Array<ItunesItemModel>;
-  setItunesItems: (itunesItems: Array<ItunesItemModel>) => void;
+  itunesItems: ItunesItemModel[];
+  storeItunesItems: (itunesItems: ItunesItemModel[]) => void;
 };
 
 const useStoreItems = (): HookReturns => {
@@ -13,14 +13,14 @@ const useStoreItems = (): HookReturns => {
 
   const dispatch = useDispatch();
 
-  const setItunesItems = (itunesItems: Array<ItunesItemModel>): void => {
+  const storeItunesItems = (itunesItems: ItunesItemModel[]): void => {
     dispatch({
       type: SET_ITUNES_ITEMS,
       itunesItems: itunesItems,
     });
   };
 
-  return { itunesItems, setItunesItems };
+  return { itunesItems, storeItunesItems };
 };
 
 export default useStoreItems;
