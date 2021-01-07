@@ -36,7 +36,7 @@ const useFetchDiscography = (): HookReturns => {
         })
         .then((response) => {
           if (response.data.results) {
-            const parsedItems = parseItems(response.data.results, filterType, null);
+            const parsedItems = parseItems(response.data.results, filterType);
             const filteredItems = filterItems(parsedItems, storedArtist.artistId);
             setDiscography(filteredItems);
           }
