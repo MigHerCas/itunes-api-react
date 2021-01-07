@@ -1,12 +1,10 @@
 import React, { useMemo, useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { useDebounce } from 'use-debounce';
 import fetchArtist from '../api/fetchArtist';
 import SearchInput from '../components/SearchInput';
-import { SET_SELECTED_ARTIST } from '../constants';
+import useStoreArtist from '../hooks/useStoreArtist';
 
 export default function IonSearchBar(): JSX.Element {
-  const dispatch = useDispatch();
   const [query, setQuery] = useState<string>('');
   const [debouncedQuery] = useDebounce(query, 800);
 
@@ -15,15 +13,15 @@ export default function IonSearchBar(): JSX.Element {
   };
 
   const artist = fetchArtist(debouncedQuery);
+  const { storeSelectedArtist } = useStoreArtist();
 
   console.log(artist);
   useMemo(() => {
-    // Artist stored inside state tree
-    dispatch({
-      type: SET_SELECTED_ARTIST,
-      selectedArtist: artist,
-    });
-  }, [artist, dispatch]);
+    // Artist stored inside state tree when fetched correctly
+    if (artist) {
+      storeSelectedArtist(artist);
+    }
+  }, [artist, storeSelectedArtist]);
 
   return <SearchInput query={query} onChange={handleChange} />;
 }
