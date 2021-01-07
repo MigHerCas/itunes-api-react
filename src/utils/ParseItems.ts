@@ -3,7 +3,7 @@ import { Album, ItemsFilter, ItunesItemModel, Track } from '../models';
 const parseItems = (
   rawItems: Array<Track | Album>,
   typeOfItems: ItemsFilter,
-  onToggle: (id: number) => void
+  onToggle: ((id: number) => void) | null
 ): Array<ItunesItemModel> => {
   switch (typeOfItems) {
     case 'Tracks':

@@ -15,7 +15,11 @@ let store: Store | undefined;
 const initialState: StateTree = {
   itemsFilter: 'Tracks',
   favouritesFilter: 'All',
-  selectedArtist: null,
+  selectedArtist: {
+    artistId: 0,
+    artistName: '',
+    artistLinkUrl: '',
+  },
   itunesItems: [],
 };
 

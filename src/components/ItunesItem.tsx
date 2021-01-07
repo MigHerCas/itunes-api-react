@@ -15,7 +15,7 @@ export default function ItunesItem({
   return (
     <li className="itunes-item">
       <div className="itunes-item__toggle-favourite">
-        <button onClick={() => onToggle(id)}>
+        <button onClick={() => onToggle && onToggle(id)}>
           <CustomIcon
             stroke="#ffd60a"
             path={mdiCardsHeart}

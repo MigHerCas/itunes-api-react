@@ -1,7 +1,7 @@
 export type StateTree = {
   itemsFilter: ItemsFilter;
   favouritesFilter: FavouritesFilter;
-  selectedArtist: Artist | null;
+  selectedArtist: Artist;
   itunesItems: ItunesItemModel[];
 };
 
@@ -38,7 +38,7 @@ export interface ItunesItemModel {
   artistId: number;
   type: ItemsFilter;
   isFavourite: boolean;
-  onToggle: (id: number) => void;
+  onToggle: ((id: number) => void) | null;
 }
 
 export type ItemsFilter = 'Tracks' | 'Albums';
