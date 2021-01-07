@@ -47,7 +47,7 @@ const useGetDiscography = (
       fetchDiscography();
       setIsLoading(false);
     }
-  }, [artistName, typeOfItems, artistId]);
+  }, [artistName, typeOfItems, artistId, onToggle]);
 
   return { fetchedItems, isLoading };
 };
