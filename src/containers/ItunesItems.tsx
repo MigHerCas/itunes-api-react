@@ -1,16 +1,22 @@
 import React from 'react';
 import EmptyResults from '../components/EmptyResults';
 import ItunesItem from '../components/ItunesItem';
+import useFavourites from '../hooks/useFavourites';
 import useFetchDiscography from '../hooks/useFetchDiscography';
 
-export default function ItunesItems(): JSX.Element {
+interface Props {
+  favouritesOnly?: boolean;
+}
+
+export default function ItunesItems({ favouritesOnly = false }: Props): JSX.Element {
   const { discography } = useFetchDiscography();
+  const { favourites } = useFavourites();
 
   if (!discography || !discography.length) return <EmptyResults />;
 
   return (
     <ol className="grid itunes-items">
-      {discography.map((itunesItem) => {
+      {(favouritesOnly ? favourites : discography).map((itunesItem) => {
         const { artistId, artistName, id, imgUrl, title, type } = itunesItem;
         return (
           <ItunesItem
