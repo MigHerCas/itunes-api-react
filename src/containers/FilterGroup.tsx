@@ -1,6 +1,5 @@
-import React from 'react';
-import Filter from '../components/Filter';
 import { FavouritesFilter, ItemsFilter } from '../models';
+import Filter from '../components/Filter';
 
 interface Props {
   filters: Array<ItemsFilter | FavouritesFilter>;

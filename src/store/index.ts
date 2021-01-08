@@ -1,7 +1,7 @@
-import { ItunesItemModel } from './../models/index';
 import { useMemo } from 'react';
-import { createStore, applyMiddleware, Store, AnyAction } from 'redux';
+import { ItunesItemModel } from './../models/index';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import { createStore, applyMiddleware, Store, AnyAction } from 'redux';
 import {
   SET_FAVOURITES_VISIBILITY_FILTER,
   SET_ITEMS_VISIBILITY_FILTER,

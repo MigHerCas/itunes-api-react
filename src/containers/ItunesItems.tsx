@@ -1,4 +1,3 @@
-import React from 'react';
 import EmptyResults from '../components/EmptyResults';
 import ItunesItem from '../components/ItunesItem';
 import useFavourites from '../hooks/useFavourites';

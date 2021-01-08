@@ -1,6 +1,6 @@
-import axios from 'axios';
 import { useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
+import axios from 'axios';
 import { StateTree, ItunesItemModel } from './../models/index';
 import filterItems from '../utils/FilterItems';
 import parseItems from '../utils/ParseItems';

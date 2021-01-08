@@ -1,4 +1,4 @@
-import React from 'react';
+// Next.js
 import Head from 'next/head';
 
 // Constants
@@ -28,7 +28,7 @@ export default function Home(): JSX.Element {
   return (
     <div className="container">
       <Head>
-        <title>Itunes api app</title>
+        <title>Results</title>
         <link rel="icon" href="/" />
       </Head>
       <Header />

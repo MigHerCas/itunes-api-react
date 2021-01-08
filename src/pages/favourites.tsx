@@ -1,7 +1,13 @@
-import React from 'react';
+// Next.js
 import Head from 'next/head';
-import useVisibilityFilter from '../hooks/useVisibilityFilter';
+
+// Constants
 import { ITEMS_FILTERS } from '../constants';
+
+// Hooks
+import useVisibilityFilter from '../hooks/useVisibilityFilter';
+
+// Components
 import Header from '../components/Header';
 import PageTitle from '../components/PageTitle';
 import FilterWrapper from '../components/FilterWrapper';

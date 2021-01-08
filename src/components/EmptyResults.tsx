@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
+import Image from 'next/image';
 import EmptyIllustrationHome from '../../public/emptyHome.svg';
 import EmptyIllustrationFavourites from '../../public/emptyFavourites.svg';
-import Image from 'next/image';
 
 export default function EmptyResults(): JSX.Element {
   const router = useRouter();

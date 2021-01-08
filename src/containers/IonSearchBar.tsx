@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDebounce } from 'use-debounce';
 import SearchInput from '../components/SearchInput';
 import useFetchArtist from '../hooks/useFetchArtist';

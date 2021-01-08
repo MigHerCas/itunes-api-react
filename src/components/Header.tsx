@@ -1,9 +1,8 @@
-import { mdiCardsHeart, mdiHomeCircle } from '@mdi/js';
 import Link from 'next/link';
-import React from 'react';
-import IonSearchBar from '../containers/IonSearchBar';
 import useFavourites from '../hooks/useFavourites';
 import CustomIcon from '../utils/CustomIcon';
+import IonSearchBar from '../containers/IonSearchBar';
+import { mdiCardsHeart, mdiHomeCircle } from '@mdi/js';
 
 export default function Header(): JSX.Element {
   const { favourites } = useFavourites();
