@@ -18,6 +18,7 @@ export default function ItunesItems({ favouritesOnly = false }: Props): JSX.Elem
     <ol className="grid itunes-items">
       {(favouritesOnly ? favourites : discography).map((itunesItem) => {
         const { artistId, artistName, id, imgUrl, title, type } = itunesItem;
+
         return (
           <ItunesItem
             key={id}

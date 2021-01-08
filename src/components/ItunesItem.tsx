@@ -1,13 +1,35 @@
 import Image from 'next/image';
-import useFavourites from '../hooks/useFavourites';
+import { useRouter } from 'next/router';
 import { ItunesItemModel } from '../models';
+import useFavourites from '../hooks/useFavourites';
+import useVisibilityFilter from '../hooks/useVisibilityFilter';
+import isFavourite from '../utils/IsFavourite';
 import CustomIcon from '../utils/CustomIcon';
 import { mdiCardsHeart } from '@mdi/js';
-import isFavourite from '../utils/IsFavourite';
 
 export default function ItunesItem(itunesItem: ItunesItemModel): JSX.Element {
+  const router = useRouter();
   const { imgUrl, title, artistName, type } = itunesItem;
   const { favourites, toggleFavourite } = useFavourites();
+  const { itemsFilter, favouritesFilter } = useVisibilityFilter();
+
+  // In favourites page, only return filtered items by type
+  if (router.pathname === '/favourites' && itunesItem.type !== itemsFilter) {
+    return <></>;
+  }
+
+  // In home page, only return filtered items by favourite state
+  if (router.pathname === '/') {
+    switch (favouritesFilter) {
+      case 'Only favourites':
+        if (!isFavourite(favourites, itunesItem)) return <></>;
+        break;
+      case 'Non favourites':
+        if (isFavourite(favourites, itunesItem)) return <></>;
+        break;
+      default:
+    }
+  }
 
   return (
     <li className="itunes-item">
