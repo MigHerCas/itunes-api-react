@@ -9,6 +9,7 @@ import {
   TOGGLE_FAVOURITE,
 } from '../constants';
 import { StateTree } from '../models';
+import isFavourite from '../utils/IsFavourite';
 
 let store: Store | undefined;
 
@@ -25,7 +26,6 @@ const initialState: StateTree = {
 
 const reducer = (state: StateTree = initialState, action: AnyAction): StateTree => {
   let newState: StateTree;
-  let favouriteItem: ItunesItemModel;
   let newFavourites: ItunesItemModel[];
 
   switch (action.type) {
@@ -37,15 +37,11 @@ const reducer = (state: StateTree = initialState, action: AnyAction): StateTree 
       return { ...state, selectedArtist: action.artist };
     case TOGGLE_FAVOURITE:
       newState = { ...state };
-      favouriteItem = action.item;
-
-      if (newState.favourites.includes(favouriteItem)) {
-        newFavourites = newState.favourites.filter(
-          (favourite) => favourite.id !== favouriteItem.id
-        );
+      if (isFavourite(state.favourites, action.item)) {
+        newFavourites = newState.favourites.filter((favourite) => favourite.id !== action.item.id);
         return { ...state, favourites: newFavourites };
       } else {
-        return { ...state, favourites: [...state.favourites, favouriteItem] };
+        return { ...state, favourites: [...state.favourites, action.item] };
       }
     default:
       return state;
