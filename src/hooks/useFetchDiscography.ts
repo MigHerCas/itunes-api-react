@@ -5,8 +5,6 @@ import { StateTree, ItunesItemModel } from './../models/index';
 import filterItems from '../utils/FilterItems';
 import parseItems from '../utils/ParseItems';
 
-const { BASE_API_URL } = process.env;
-
 type HookReturns = {
   discography: ItunesItemModel[];
   isLoading: boolean;
@@ -26,7 +24,11 @@ const useFetchDiscography = (): HookReturns => {
       setIsLoading(true);
       setIsError(false);
       axios
-        .get(`${BASE_API_URL}`, {
+        .get(`${process.env.BASE_API_URL}`, {
+          headers: {
+            'Access-Control-Allow-Origin': process.env.PRODUCTION_URL,
+            'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
+          },
           params: {
             term: storedArtist.artistName,
             entity: filterType === 'Tracks' ? 'musicTrack' : 'album',

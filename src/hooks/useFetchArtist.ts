@@ -13,8 +13,6 @@ type ArtistSearchApiResponse = {
   results: Artist[];
 };
 
-const { BASE_API_URL } = process.env;
-
 const useFetchArtist = (): HookReturns => {
   const [debouncedQuery, setDebouncedQuery] = useState<string>('');
   const [selectedArtist, setSelectedArtist] = useState<Artist | null>(null);
@@ -27,12 +25,16 @@ const useFetchArtist = (): HookReturns => {
       setIsError(false);
 
       axios
-        .get<ArtistSearchApiResponse>(`${BASE_API_URL}`, {
+        .get<ArtistSearchApiResponse>(`${process.env.BASE_API_URL}`, {
           params: {
             term: debouncedQuery,
             entity: 'musicArtist',
             country: 'es',
             attribute: 'allArtistTerm',
+          },
+          headers: {
+            'Access-Control-Allow-Origin': process.env.PRODUCTION_URL,
+            'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
           },
         })
         .then((response) => response.data.results && setSelectedArtist(response.data.results[0]))

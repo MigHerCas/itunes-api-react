@@ -1,8 +1,8 @@
 const withImages = require('next-images')
 
 module.exports = withImages({
-
   env: {
+    PRODUCTION_URL: "https://itunes-api-react.vercel.app/",
     BASE_API_URL: "https://itunes.apple.com/search",
   },
   images: {
