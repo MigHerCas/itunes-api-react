@@ -40,13 +40,11 @@ const reducer = (state: StateTree = initialState, action: AnyAction): StateTree 
       favouriteItem = action.item;
 
       if (newState.favourites.includes(favouriteItem)) {
-        console.log('Included');
         newFavourites = newState.favourites.filter(
           (favourite) => favourite.id !== favouriteItem.id
         );
         return { ...state, favourites: newFavourites };
       } else {
-        console.log('Not included');
         return { ...state, favourites: [...state.favourites, favouriteItem] };
       }
     default:
