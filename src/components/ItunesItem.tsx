@@ -1,26 +1,22 @@
-import { mdiCardsHeart } from '@mdi/js';
+import Image from 'next/image';
+import useFavourites from '../hooks/useFavourites';
 import { ItunesItemModel } from '../models';
 import CustomIcon from '../utils/CustomIcon';
-import Image from 'next/image';
-import { useState } from 'react';
+import { mdiCardsHeart } from '@mdi/js';
 
-export default function ItunesItem({
-  imgUrl,
-  title,
-  artistName,
-  type,
-}: ItunesItemModel): JSX.Element {
-  const [isFavourite] = useState<boolean>(false);
+export default function ItunesItem(itunesItem: ItunesItemModel): JSX.Element {
+  const { imgUrl, title, artistName, type } = itunesItem;
+  const { favourites, toggleFavourite } = useFavourites();
 
   return (
     <li className="itunes-item">
       <div className="itunes-item__toggle-favourite">
-        <button>
+        <button onClick={() => toggleFavourite(itunesItem)}>
           <CustomIcon
             stroke="#ffd60a"
             path={mdiCardsHeart}
             size={2}
-            fill={isFavourite ? '#ffcc00' : 'transparent'}
+            fill={favourites.includes(itunesItem) ? '#ffcc00' : 'transparent'}
           />
         </button>
       </div>

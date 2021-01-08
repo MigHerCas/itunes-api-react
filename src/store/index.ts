@@ -1,3 +1,4 @@
+import { ItunesItemModel } from './../models/index';
 import { useMemo } from 'react';
 import { createStore, applyMiddleware, Store, AnyAction } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
@@ -5,6 +6,7 @@ import {
   SET_FAVOURITES_VISIBILITY_FILTER,
   SET_ITEMS_VISIBILITY_FILTER,
   SET_SELECTED_ARTIST,
+  TOGGLE_FAVOURITE,
 } from '../constants';
 import { StateTree } from '../models';
 
@@ -22,6 +24,10 @@ const initialState: StateTree = {
 };
 
 const reducer = (state: StateTree = initialState, action: AnyAction): StateTree => {
+  let newState: StateTree;
+  let favouriteItem: ItunesItemModel;
+  let newFavourites: ItunesItemModel[];
+
   switch (action.type) {
     case SET_ITEMS_VISIBILITY_FILTER:
       return { ...state, itemsFilter: action.itemsFilter };
@@ -29,6 +35,20 @@ const reducer = (state: StateTree = initialState, action: AnyAction): StateTree 
       return { ...state, favouritesFilter: action.favouritesFilter };
     case SET_SELECTED_ARTIST:
       return { ...state, selectedArtist: action.artist };
+    case TOGGLE_FAVOURITE:
+      newState = { ...state };
+      favouriteItem = action.item;
+
+      if (newState.favourites.includes(favouriteItem)) {
+        console.log('Included');
+        newFavourites = newState.favourites.filter(
+          (favourite) => favourite.id !== favouriteItem.id
+        );
+        return { ...state, favourites: newFavourites };
+      } else {
+        console.log('Not included');
+        return { ...state, favourites: [...state.favourites, favouriteItem] };
+      }
     default:
       return state;
   }
